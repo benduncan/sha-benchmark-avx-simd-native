@@ -62,21 +62,24 @@ func main() {
 
 	var h hash.Hash
 
+	if *method == "avx512" {
+		server := shasimd.NewAvx512Server()
+		h = shasimd.NewAvx512(server)
+
+	} else if *method == "simd" {
+		// If AVX512 is unavailable, fallback to other SIMD features available (e.g SHA1/2 extension on amd64 or ARM)
+		h = shasimd.New()
+
+	} else {
+		h = sha.New()
+
+	}
+
 	// Loop through X benchmarks
 	for i := 0; i < *numLoop; i++ {
 
-		if *method == "avx512" {
-			server := shasimd.NewAvx512Server()
-			h = shasimd.NewAvx512(server)
-
-		} else if *method == "simd" {
-			// If AVX512 is unavailable, fallback to other SIMD features available (e.g SHA1/2 on ARM)
-			h = shasimd.New()
-
-		} else {
-			h = sha.New()
-
-		}
+		// Reset the hash calculation
+		h.Reset()
 
 		// Sum the file buffer in memory
 		h.Write(data)
