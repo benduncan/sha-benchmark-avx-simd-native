@@ -27,7 +27,7 @@ func main() {
 	}
 
 	// Confirm SHA1 on ARM
-	if *method == "simd" && !cpuid.CPU.Supports(cpuid.SHA, cpuid.SSSE3, cpuid.SSE4) {
+	if *method == "simd" && !cpuid.CPU.Supports(cpuid.SHA, cpuid.SSSE3, cpuid.SSE4) && runtime.GOARCH == "amd64" {
 		fmt.Println("Error: SHA extension not available on CPU (amd64)")
 		os.Exit(1)
 	}
