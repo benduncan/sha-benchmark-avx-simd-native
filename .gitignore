@@ -1,0 +1,9 @@
+#==============================================================================#
+# This file specifies intentionally untracked files that git should ignore.
+#==============================================================================#
+
+test-files/*.bin
+bin/sha256-go
+results/*.log
+node_modules
+
