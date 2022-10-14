@@ -5,7 +5,7 @@ all: clean init buildgo buildnode
 run: benchmark
 
 buildgo:
-	go build -o ./bin/sha256-go sha256.go
+	go build -o ./bin/sha256-go
 
 buildnode:
 	npm ci	

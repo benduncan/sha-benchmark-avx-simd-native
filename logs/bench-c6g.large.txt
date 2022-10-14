@@ -1,0 +1,205 @@
+$ curl http://169.254.169.254/latest/meta-data/instance-type
+c6g.large
+
+$ lscpu 
+Architecture:        aarch64
+Byte Order:          Little Endian
+CPU(s):              2
+On-line CPU(s) list: 0,1
+Thread(s) per core:  1
+Core(s) per socket:  2
+Socket(s):           1
+NUMA node(s):        1
+Model:               1
+BogoMIPS:            243.75
+L1d cache:           64K
+L1i cache:           64K
+L2 cache:            1024K
+L3 cache:            32768K
+NUMA node0 CPU(s):   0,1
+Flags:               fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm lrcpc dcpop asimddp ssbs
+
+$ make benchmark
+sh benchmark.sh
+SIMD support available
+SIMD support available
+16K.bin > openssl
+
+real	0m0.265s
+user	0m0.206s
+sys	0m0.063s
+-
+16K.bin > node
+
+real	0m0.058s
+user	0m0.055s
+sys	0m0.004s
+-
+16K.bin > go-native
+
+real	0m0.002s
+user	0m0.000s
+sys	0m0.002s
+-
+16K.bin > go-avx512
+
+real	0m0.002s
+user	0m0.002s
+sys	0m0.000s
+-
+16K.bin > go-simd
+
+real	0m0.002s
+user	0m0.002s
+sys	0m0.000s
+-
+256K.bin > openssl
+
+real	0m0.284s
+user	0m0.217s
+sys	0m0.071s
+-
+256K.bin > node
+
+real	0m0.077s
+user	0m0.065s
+sys	0m0.012s
+-
+256K.bin > go-native
+
+real	0m0.018s
+user	0m0.019s
+sys	0m0.000s
+-
+256K.bin > go-avx512
+
+real	0m0.018s
+user	0m0.018s
+sys	0m0.000s
+-
+256K.bin > go-simd
+
+real	0m0.018s
+user	0m0.019s
+sys	0m0.000s
+-
+1024K.bin > openssl
+
+real	0m0.347s
+user	0m0.261s
+sys	0m0.090s
+-
+1024K.bin > node
+
+real	0m0.125s
+user	0m0.113s
+sys	0m0.012s
+-
+1024K.bin > go-native
+
+real	0m0.069s
+user	0m0.069s
+sys	0m0.000s
+-
+1024K.bin > go-avx512
+
+real	0m0.069s
+user	0m0.069s
+sys	0m0.000s
+-
+1024K.bin > go-simd
+
+real	0m0.069s
+user	0m0.069s
+sys	0m0.000s
+-
+16M.bin > openssl
+
+real	0m1.600s
+user	0m1.325s
+sys	0m0.278s
+-
+16M.bin > node
+
+real	0m1.127s
+user	0m1.123s
+sys	0m0.004s
+-
+16M.bin > go-native
+
+real	0m1.080s
+user	0m1.077s
+sys	0m0.008s
+-
+16M.bin > go-avx512
+
+real	0m1.079s
+user	0m1.073s
+sys	0m0.008s
+-
+16M.bin > go-simd
+
+real	0m1.079s
+user	0m1.077s
+sys	0m0.004s
+-
+64M.bin > openssl
+
+real	0m5.360s
+user	0m4.521s
+sys	0m0.843s
+-
+64M.bin > node
+
+real	0m4.303s
+user	0m4.276s
+sys	0m0.032s
+-
+64M.bin > go-native
+
+real	0m4.307s
+user	0m4.291s
+sys	0m0.020s
+-
+64M.bin > go-avx512
+
+real	0m4.305s
+user	0m4.293s
+sys	0m0.016s
+-
+64M.bin > go-simd
+
+real	0m4.309s
+user	0m4.283s
+sys	0m0.028s
+-
+256M.bin > openssl
+
+real	0m20.679s
+user	0m17.403s
+sys	0m3.280s
+-
+256M.bin > node
+
+real	0m16.992s
+user	0m16.879s
+sys	0m0.116s
+-
+256M.bin > go-native
+
+real	0m17.214s
+user	0m17.156s
+sys	0m0.068s
+-
+256M.bin > go-avx512
+
+real	0m17.210s
+user	0m17.163s
+sys	0m0.056s
+-
+256M.bin > go-simd
+
+real	0m17.209s
+user	0m17.159s
+sys	0m0.060s
+-

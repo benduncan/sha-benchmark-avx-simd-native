@@ -22,7 +22,7 @@ make
 
 ## Benchmarking
 
-For benchmarking the utility is available to run on both amd64 (x86) and ARM.
+For benchmarking the utility is available to run on both amd64 (x86) and ARM. The benchmarking is isolated to a single core for gathering performance metrics.
 
 ```
 make benchmark

@@ -1,16 +1,13 @@
 package main
 
 import (
-	sha "crypto/sha256"
 	"flag"
 	"fmt"
-	"hash"
 	"log"
 	"os"
 	"runtime"
 
 	"github.com/klauspost/cpuid/v2"
-	shasimd "github.com/minio/sha256-simd"
 )
 
 func main() {
@@ -24,13 +21,13 @@ func main() {
 	flag.Parse()
 
 	// Confirm CPU capabilities for AVX-512
-	if *method == "avx512" && !cpuid.CPU.Supports(cpuid.AVX512F, cpuid.AVX512DQ, cpuid.AVX512BW, cpuid.AVX512VL) && runtime.GOARCH == "amd64" {
+	if *method == "avx512" && !cpuid.CPU.Supports(cpuid.AVX512F, cpuid.AVX512DQ, cpuid.AVX512BW, cpuid.AVX512VL) {
 		fmt.Println("Error: AVX512 extension not available on CPU (amd64)")
 		os.Exit(1)
 	}
 
 	// Confirm SHA1 on ARM
-	if *method == "simd" && !cpuid.CPU.Supports(cpuid.SHA, cpuid.SSSE3, cpuid.SSE4) && runtime.GOARCH == "amd64" {
+	if *method == "simd" && !cpuid.CPU.Supports(cpuid.SHA, cpuid.SSSE3, cpuid.SSE4) {
 		fmt.Println("Error: SHA extension not available on CPU (amd64)")
 		os.Exit(1)
 	}
@@ -60,20 +57,7 @@ func main() {
 		log.Fatal(err)
 	}
 
-	var h hash.Hash
-
-	if *method == "avx512" {
-		server := shasimd.NewAvx512Server()
-		h = shasimd.NewAvx512(server)
-
-	} else if *method == "simd" {
-		// If AVX512 is unavailable, fallback to other SIMD features available (e.g SHA1/2 extension on amd64 or ARM)
-		h = shasimd.New()
-
-	} else {
-		h = sha.New()
-
-	}
+	h := SelectCapability(method)
 
 	// Loop through X benchmarks
 	for i := 0; i < *numLoop; i++ {
