@@ -1,6 +1,8 @@
 #!/bin/sh
 
 echo "Creating benchmark files, please standby."
+mkdir test-files
+mkdir results
 
 #dd if=/dev/zero of=test-files/2K.bin bs=2k count=1
 #dd if=/dev/zero of=test-files/4K.bin bs=4k count=1
