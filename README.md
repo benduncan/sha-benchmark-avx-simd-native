@@ -47,7 +47,7 @@ The tool will benchmark the following:
 
 ## Performance conclusion
 
-This benchmark simulates a straight-forward service which calculates the SHA sum of different file streams on disk, using 100 iterations for 16K, 256K, 1024K, 16M and 64M block-sizes. This is intended to guide implementations that heavily use SHA in their application logic, such as uploaded submissions, collections of assets on disk, and user-generated input. 
+This benchmark simulates a straight-forward service which calculates the SHA sum of different file streams on disk, using 100 iterations each for 16K, 256K, 1024K, 16M and 64M block-sizes. This is intended to guide implementations that heavily use SHA in their application logic, such as uploaded submissions, collections of assets on disk, and user-generated input. 
 
 In summary there is negligible difference between using the OpenSSL CLI tool, NodeJS, the native Golang SHA (ASM) implementation or Golang libraries using SIMD. The inbuilt OpenSSL library is highly optimised in machine-code for the target architecture, and third-party implementations such as the `minio/sha256-simd` are no longer faster than the native Go SHA rewrite in Go versions >1.18.
 
