@@ -49,7 +49,7 @@ The tool will benchmark the following:
 
 This benchmark simulates a straight-forward service which calculates the SHA sum of different file streams on disk, using 100 iterations for 16K, 256K, 1024K, 16M and 64M block-sizes. This is intended to guide implementations that heavily use SHA in their application logic, such as uploaded submissions, collections of assets on disk, and user-generated input. 
 
-In summary there is negligable difference between using the OpenSSL CLI tool, NodeJS, the native Golang SHA (ASM) implementation or Golang libraries using SIMD. The inbuilt OpenSSL library is highly optimised in machine-code for the target architecture, and third-party implementations such as the `minio/sha256-simd` are no longer faster than the native Go SHA rewrite in Go versions >1.18.
+In summary there is negligible difference between using the OpenSSL CLI tool, NodeJS, the native Golang SHA (ASM) implementation or Golang libraries using SIMD. The inbuilt OpenSSL library is highly optimised in machine-code for the target architecture, and third-party implementations such as the `minio/sha256-simd` are no longer faster than the native Go SHA rewrite in Go versions >1.18.
 
 Surprisingly the Golang AVX-512 implementation on modern Intel CPU's suffered poor performance, possibly due to CPU thermal and voltage throttling and requires further investigation for analysis.
 
@@ -57,7 +57,7 @@ Newer ARM instances have the highest price/performance ratio for large-scale ope
 
 # Analyzing the benchmark results
 
-The directory `analytics/` contains jupyter notebooks that can be used to visualise the output data. Plots are saved as `.html` files in the `datavis/` directory.
+The directory `analytics/` contains Jupyter Notebooks that can be used to visualise the output data. Plots are saved as `.html` files in the `datavis/` directory.
 
 ### Instance speed for SHA openssl operations over a range of block sizes
 
