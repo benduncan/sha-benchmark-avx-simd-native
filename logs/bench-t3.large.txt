@@ -1,0 +1,176 @@
+$  curl http://169.254.169.254/latest/meta-data/instance-type
+t3.large
+
+$ lscpu
+Architecture:        x86_64
+CPU op-mode(s):      32-bit, 64-bit
+Byte Order:          Little Endian
+CPU(s):              2
+On-line CPU(s) list: 0,1
+Thread(s) per core:  2
+Core(s) per socket:  1
+Socket(s):           1
+NUMA node(s):        1
+Vendor ID:           GenuineIntel
+CPU family:          6
+Model:               85
+Model name:          Intel(R) Xeon(R) Platinum 8259CL CPU @ 2.50GHz
+Stepping:            7
+CPU MHz:             2500.004
+BogoMIPS:            5000.00
+Hypervisor vendor:   KVM
+Virtualization type: full
+L1d cache:           32K
+L1i cache:           32K
+L2 cache:            1024K
+L3 cache:            36608K
+NUMA node0 CPU(s):   0,1
+Flags:               fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ss ht syscall nx pdpe1gb rdtscp lm constant_tsc rep_good nopl xtopology nonstop_tsc cpuid tsc_known_freq pni pclmulqdq ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm abm 3dnowprefetch invpcid_single pti fsgsbase tsc_adjust bmi1 avx2 smep bmi2 erms invpcid mpx avx512f avx512dq rdseed adx smap clflushopt clwb avx512cd avx512bw avx512vl xsaveopt xsavec xgetbv1 xsaves ida arat pku ospke
+
+$ sh benchmark.sh
+SIMD support available
+Error: SHA extension not available on CPU (amd64)
+16K.bin > openssl
+
+real	0m0.595s
+user	0m0.254s
+sys	0m0.128s
+-
+16K.bin > node
+
+real	0m0.083s
+user	0m0.057s
+sys	0m0.010s
+-
+16K.bin > go-native
+
+real	0m0.008s
+user	0m0.007s
+sys	0m0.000s
+-
+16K.bin > go-avx512
+
+real	0m0.043s
+user	0m0.012s
+sys	0m0.006s
+-
+256K.bin > openssl
+
+real	0m0.490s
+user	0m0.305s
+sys	0m0.126s
+-
+256K.bin > node
+
+real	0m0.122s
+user	0m0.110s
+sys	0m0.012s
+-
+256K.bin > go-native
+
+real	0m0.077s
+user	0m0.077s
+sys	0m0.000s
+-
+256K.bin > go-avx512
+
+real	0m0.149s
+user	0m0.155s
+sys	0m0.000s
+-
+1024K.bin > openssl
+
+real	0m0.632s
+user	0m0.518s
+sys	0m0.123s
+-
+1024K.bin > node
+
+real	0m0.324s
+user	0m0.304s
+sys	0m0.020s
+-
+1024K.bin > go-native
+
+real	0m0.302s
+user	0m0.295s
+sys	0m0.008s
+-
+1024K.bin > go-avx512
+
+real	0m0.606s
+user	0m0.602s
+sys	0m0.057s
+-
+16M.bin > openssl
+
+real	0m4.886s
+user	0m4.486s
+sys	0m0.406s
+-
+16M.bin > node
+
+real	0m4.280s
+user	0m4.252s
+sys	0m0.028s
+-
+16M.bin > go-native
+
+real	0m4.841s
+user	0m4.851s
+sys	0m0.008s
+-
+16M.bin > go-avx512
+
+real	0m9.175s
+user	0m8.983s
+sys	0m0.052s
+-
+64M.bin > openssl
+
+real	0m18.439s
+user	0m17.153s
+sys	0m1.286s
+-
+64M.bin > node
+
+real	0m17.122s
+user	0m16.896s
+sys	0m0.052s
+-
+64M.bin > go-native
+
+real	0m19.652s
+user	0m19.432s
+sys	0m0.072s
+-
+64M.bin > go-avx512
+
+real	0m36.110s
+user	0m35.553s
+sys	0m0.152s
+-
+256M.bin > openssl
+
+real	1m12.723s
+user	1m7.470s
+sys	0m5.047s
+-
+256M.bin > node
+
+real	1m7.555s
+user	1m7.262s
+sys	0m0.160s
+-
+256M.bin > go-native
+
+real	1m17.614s
+user	1m17.438s
+sys	0m0.309s
+-
+256M.bin > go-avx512
+
+real	2m22.687s
+user	2m21.738s
+sys	0m0.604s
+-

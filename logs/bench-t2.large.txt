@@ -1,0 +1,142 @@
+$ curl http://169.254.169.254/latest/meta-data/instance-type
+t2.large
+
+$ lscpu
+Architecture:        x86_64
+CPU op-mode(s):      32-bit, 64-bit
+Byte Order:          Little Endian
+CPU(s):              2
+On-line CPU(s) list: 0,1
+Thread(s) per core:  1
+Core(s) per socket:  2
+Socket(s):           1
+NUMA node(s):        1
+Vendor ID:           GenuineIntel
+CPU family:          6
+Model:               79
+Model name:          Intel(R) Xeon(R) CPU E5-2686 v4 @ 2.30GHz
+Stepping:            1
+CPU MHz:             2300.153
+BogoMIPS:            4600.05
+Hypervisor vendor:   Xen
+Virtualization type: full
+L1d cache:           32K
+L1i cache:           32K
+L2 cache:            256K
+L3 cache:            46080K
+NUMA node0 CPU(s):   0,1
+Flags:               fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx rdtscp lm constant_tsc rep_good nopl xtopology cpuid tsc_known_freq pni pclmulqdq ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm abm cpuid_fault invpcid_single pti fsgsbase bmi1 avx2 smep bmi2 erms invpcid xsaveopt
+
+$ make benchmark
+
+sh benchmark.sh
+Error: AVX512 extension not available on CPU (amd64)
+Error: SHA extension not available on CPU (amd64)
+16K.bin > openssl
+
+real	0m0.350s
+user	0m0.234s
+sys	0m0.119s
+-
+16K.bin > node
+
+real	0m0.073s
+user	0m0.065s
+sys	0m0.008s
+-
+16K.bin > go-native
+
+real	0m0.007s
+user	0m0.000s
+sys	0m0.008s
+-
+256K.bin > openssl
+
+real	0m0.421s
+user	0m0.303s
+sys	0m0.124s
+-
+256K.bin > node
+
+real	0m0.146s
+user	0m0.147s
+sys	0m0.000s
+-
+256K.bin > go-native
+
+real	0m0.089s
+user	0m0.090s
+sys	0m0.000s
+-
+1024K.bin > openssl
+
+real	0m0.698s
+user	0m0.581s
+sys	0m0.124s
+-
+1024K.bin > node
+
+real	0m0.377s
+user	0m0.366s
+sys	0m0.012s
+-
+1024K.bin > go-native
+
+real	0m0.356s
+user	0m0.349s
+sys	0m0.008s
+-
+16M.bin > openssl
+
+real	0m5.714s
+user	0m5.225s
+sys	0m0.496s
+-
+16M.bin > node
+
+real	0m4.971s
+user	0m4.936s
+sys	0m0.036s
+-
+16M.bin > go-native
+
+real	0m5.697s
+user	0m5.713s
+sys	0m0.012s
+-
+64M.bin > openssl
+
+real	0m21.587s
+user	0m19.951s
+sys	0m1.643s
+-
+64M.bin > node
+
+real	0m19.628s
+user	0m19.580s
+sys	0m0.052s
+-
+64M.bin > go-native
+
+real	0m22.779s
+user	0m22.838s
+sys	0m0.036s
+-
+256M.bin > openssl
+
+real	1m25.096s
+user	1m19.109s
+sys	0m5.993s
+-
+256M.bin > node
+
+real	1m18.183s
+user	1m17.996s
+sys	0m0.188s
+-
+256M.bin > go-native
+
+real	1m31.137s
+user	1m31.294s
+sys	0m0.177s
+-

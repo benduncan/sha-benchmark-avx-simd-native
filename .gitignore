@@ -6,4 +6,3 @@ test-files/*.bin
 bin/sha256-go
 results/*.log
 node_modules
-

@@ -41,12 +41,6 @@ real	0m0.002s
 user	0m0.002s
 sys	0m0.000s
 -
-16K.bin > go-avx512
-
-real	0m0.003s
-user	0m0.001s
-sys	0m0.000s
--
 16K.bin > go-simd
 
 real	0m0.002s
@@ -70,12 +64,6 @@ sys	0m0.004s
 real	0m0.017s
 user	0m0.014s
 sys	0m0.004s
--
-256K.bin > go-avx512
-
-real	0m0.003s
-user	0m0.001s
-sys	0m0.000s
 -
 256K.bin > go-simd
 
@@ -101,12 +89,6 @@ real	0m0.066s
 user	0m0.066s
 sys	0m0.000s
 -
-1024K.bin > go-avx512
-
-real	0m0.004s
-user	0m0.000s
-sys	0m0.002s
--
 1024K.bin > go-simd
 
 real	0m0.066s
@@ -130,12 +112,6 @@ sys	0m0.012s
 real	0m1.034s
 user	0m1.032s
 sys	0m0.004s
--
-16M.bin > go-avx512
-
-real	0m0.005s
-user	0m0.000s
-sys	0m0.005s
 -
 16M.bin > go-simd
 
@@ -161,12 +137,6 @@ real	0m4.130s
 user	0m4.121s
 sys	0m0.012s
 -
-64M.bin > go-avx512
-
-real	0m0.011s
-user	0m0.000s
-sys	0m0.013s
--
 64M.bin > go-simd
 
 real	0m4.129s
@@ -191,16 +161,9 @@ real	0m16.512s
 user	0m16.476s
 sys	0m0.044s
 -
-256M.bin > go-avx512
-
-real	0m0.032s
-user	0m0.000s
-sys	0m0.031s
--
 256M.bin > go-simd
 
 real	0m16.509s
 user	0m16.480s
 sys	0m0.036s
 -
-
