@@ -90,7 +90,7 @@ The directory `analytics/` contains Jupyter Notebooks that can be used to visual
     - [x] c6a.large (AMD EPYC 7R13 Processor)
     - [x] c6g.large (Graviton2/ARM)
     - [x] c6i.large (Intel(R) Xeon(R) Platinum 8375C CPU @ 2.90GHz)
-    - [x] c7g.large (Graviton2/ARM)
+    - [x] c7g.large (Graviton3/ARM)
     - [x] t2.large (Intel(R) Xeon(R) CPU E5-2686 v4 @ 2.30GHz)
     - [x] t3.large (Intel(R) Xeon(R) Platinum 8259CL CPU @ 2.50GHz)
     - [x] t4g.large (Graviton2/ARM)
