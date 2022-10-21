@@ -59,21 +59,15 @@ Newer ARM instances have the highest price/performance ratio for large-scale ope
 
 The directory `analytics/` contains Jupyter Notebooks that can be used to visualise the output data. Plots are saved as `.html` files in the `datavis/` directory.
 
-### Instance speed for SHA openssl operations over a range of block sizes
-
 ![exp1_speed_data_openssl.png](analytics/assets/exp1_speed_data_openssl.png)
-
-### Instance speed for SHA NodeJS operations over a range of block sizes
 
 ![exp1_speed_data_node.png](analytics/assets/exp1_speed_data_node.png)
 
-### Instance speed for SHA go-native operations over a range of block sizes
-
 ![exp1_speed_data_node.png](analytics/assets/exp1_speed_data_go-native.png)
 
-### Instance speed for SHA go-SIMD operations over a range of block sizes
-
 ![exp1_speed_data_go-simd.png](analytics/assets/exp1_speed_data_go-simd.png)
+
+![exp1_speed_data_go-avx512.png](analytics/assets/exp1_speed_data_go-avx512.png)
 
 ### Cost/performance ratio for SHA openssl operations over a range of block sizes (us-east-1)
 
